@@ -22,6 +22,14 @@ node1 って名前のコンテナの ip を確認する
 
   sudo docker rm CONTAINER_ID
 
-イメージを全部消す
+イメージの一覧を確認する
+
+  sudo docker images
+
+イメージを削除する
+
+  sudo docker rmi IMAGE_ID
+
+不要なイメージを全部消す
 
   sudo docker rmi $(sudo docker images | awk '/^<none>/ { print $3 }')
