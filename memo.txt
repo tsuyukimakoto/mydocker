@@ -1,0 +1,27 @@
+カレントの Dockerfile を使って tsuyukimakoto/consul というタグでイメージをビルドする
+
+  sudo docker build --no-cache --rm -t tsuyukimakoto/consul .
+
+コンテナ に node1 って名前を付けて起動しつつbash起動する
+
+  sudo docker run -i -t --name node1 tsuyukimakoto/consul /bin/bash
+
+コンテナをデーモンモードで起動する
+
+  sudo docker run -d --name node1 tsuyukimakoto/consul
+
+node1 って名前のコンテナの ip を確認する
+
+  sudo docker inspect -f '{{ .NetworkSettings.IPAddress }}' node1
+
+コンテナの一覧を確認する
+
+  sudo docker ps -a
+
+インスタンスを消す
+
+  sudo docker rm CONTAINER_ID
+
+イメージを全部消す
+
+  sudo docker rmi $(sudo docker images | awk '/^<none>/ { print $3 }')
